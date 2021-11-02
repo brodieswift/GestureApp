@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://App.gd" type="Script" id=2]
+[ext_resource path="res://Session.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ZoomingCamera2D.gd" type="Script" id=4]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="App" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuView" parent="." instance=ExtResource( 1 )]
+
+[node name="15s" parent="MenuView/MenuNode/HBoxContainer3" index="0"]
+group = SubResource( 1 )
+
+[node name="30s" parent="MenuView/MenuNode/HBoxContainer3" index="1"]
+group = SubResource( 1 )
+
+[node name="1m" parent="MenuView/MenuNode/HBoxContainer3" index="2"]
+group = SubResource( 1 )
+
+[node name="2m" parent="MenuView/MenuNode/HBoxContainer3" index="3"]
+group = SubResource( 1 )
+
+[node name="5m" parent="MenuView/MenuNode/HBoxContainer3" index="4"]
+group = SubResource( 1 )
+
+[node name="10m" parent="MenuView/MenuNode/HBoxContainer3" index="5"]
+group = SubResource( 1 )
+
+[node name="SessionView" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="ItemList" parent="SessionView/CenterContainer" index="0"]
+margin_top = 480.0
+margin_bottom = 480.0
+
+[node name="ZoomingCamera2D" type="Camera2D" parent="."]
+visible = false
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="ZoomingCamera2D"]
+
+[connection signal="resized" from="." to="ZoomingCamera2D" method="_on_App_resized"]
+[connection signal="pressed" from="MenuView/MenuNode/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="value_changed" from="MenuView/MenuNode/CenterContainer/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="MenuView/VBoxContainer/StartSessionButton" to="." method="_on_StartSessionButton_pressed"]
+[connection signal="dir_selected" from="MenuView/CenterContainer/FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="timeout" from="SessionView/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="SessionView/Toolbar/btnPin" to="." method="_on_btnPin_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnPrev" to="." method="_on_btnPrev_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnPlay" to="." method="_on_btnPlay_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnNext" to="." method="_on_btnNext_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnFlipH" to="." method="_on_btnFlipH_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnFilter" to="." method="_on_btnFilter_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnList" to="." method="_on_btnList_pressed"]
+[connection signal="pressed" from="SessionView/Toolbar/btnExit" to="." method="_on_btnExit_pressed"]
+[connection signal="item_activated" from="SessionView/CenterContainer/ItemList" to="." method="_on_ItemList_item_activated"]
+
+[editable path="MenuView"]
+[editable path="SessionView"]
