@@ -38,10 +38,6 @@ group = SubResource( 1 )
 [node name="SessionView" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="ItemList" parent="SessionView/CenterContainer" index="0"]
-margin_top = 480.0
-margin_bottom = 480.0
-
 [node name="ZoomingCamera2D" type="Camera2D" parent="."]
 visible = false
 script = ExtResource( 4 )
@@ -62,7 +58,6 @@ script = ExtResource( 4 )
 [connection signal="pressed" from="SessionView/Toolbar/btnFilter" to="." method="_on_btnFilter_pressed"]
 [connection signal="pressed" from="SessionView/Toolbar/btnList" to="." method="_on_btnList_pressed"]
 [connection signal="pressed" from="SessionView/Toolbar/btnExit" to="." method="_on_btnExit_pressed"]
-[connection signal="item_activated" from="SessionView/CenterContainer/ItemList" to="." method="_on_ItemList_item_activated"]
 
 [editable path="MenuView"]
 [editable path="SessionView"]

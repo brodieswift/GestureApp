@@ -14,7 +14,7 @@ onready var buttonNext = $"SessionView/Toolbar/btnNext"
 onready var buttonPrevious = $"SessionView/Toolbar/btnPrev"
 onready var buttonList = $"SessionView/Toolbar/btnList"
 onready var buttonFlipH = $"SessionView/Toolbar/btnFlipH"
-onready var itemList = $"SessionView/CenterContainer/ItemList"
+onready var itemList = $"SessionView/ItemList"
 onready var filterGrey = $"SessionView/Greyscale"
 
 var iconPlay = preload("res://Icons/play.png")

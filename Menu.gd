@@ -4,6 +4,7 @@ var sessionTime = 30
 
 func _on_15s_pressed():
 	sessionTime = 1
+	print("clicky")
 
 func _on_30s_pressed():
 	sessionTime = 30

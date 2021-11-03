@@ -16,6 +16,21 @@
 shader = ExtResource( 8 )
 
 [sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.368627, 0.647059, 0.85098, 0.8 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color( 0.176471, 0.192157, 0.266667, 0.929412 )
+border_color = Color( 0.266667, 0.286275, 0.376471, 0.929412 )
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.231333, 0.281715, 0.336678, 1 )
 corner_radius_top_left = 9
 corner_radius_top_right = 9
@@ -23,31 +38,16 @@ corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 corner_detail = 10
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.0882994, 0.0981105, 0.140625, 1 )
 corner_radius_top_left = 9
 corner_radius_top_right = 9
 corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.129412, 0.172549, 0.219608, 1 )
 corner_detail = 10
-
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.368627, 0.647059, 0.85098, 0.8 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id=7]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 10.0
-content_margin_bottom = 10.0
-bg_color = Color( 0.176471, 0.192157, 0.266667, 0.929412 )
-border_color = Color( 0.266667, 0.286275, 0.376471, 0.929412 )
 
 [node name="SessionView" type="Control"]
 anchor_right = 1.0
@@ -98,6 +98,21 @@ text = "0:00"
 align = 2
 script = ExtResource( 3 )
 
+[node name="ItemList" type="ItemList" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 504, 0 )
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+auto_height = true
+max_columns = 7
+same_column_width = true
+fixed_column_width = 64
+fixed_icon_size = Vector2( 64, 64 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Toolbar" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -117,9 +132,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Pin app above windows."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 1 )
 expand_icon = true
 
@@ -130,9 +145,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Previous image."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 6 )
 expand_icon = true
 
@@ -143,9 +158,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Pause."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 4 )
 expand_icon = true
 
@@ -156,9 +171,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Next image."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 5 )
 expand_icon = true
 
@@ -169,9 +184,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Flip image horizontally."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 7 )
 expand_icon = true
 
@@ -182,9 +197,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Greyscale Filter."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 9 )
 expand_icon = true
 
@@ -196,9 +211,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "Session list."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 10 )
 expand_icon = true
 
@@ -209,9 +224,9 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 focus_mode = 0
 mouse_filter = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 expand_icon = true
 
 [node name="btnExit" type="Button" parent="Toolbar"]
@@ -221,34 +236,17 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 48, 48 )
 hint_tooltip = "End session."
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 icon = ExtResource( 11 )
 expand_icon = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemList" type="ItemList" parent="CenterContainer"]
-visible = false
-margin_left = 48.0
-margin_top = 470.0
-margin_right = 552.0
-margin_bottom = 490.0
-rect_min_size = Vector2( 504, 0 )
-custom_styles/selected_focus = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
-auto_height = true
-max_columns = 7
-same_column_width = true
-fixed_column_width = 64
-fixed_icon_size = Vector2( 64, 64 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
