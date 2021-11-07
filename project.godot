@@ -22,6 +22,8 @@ _global_script_class_icons={
 
 config/name="GestureDrawing"
 run/main_scene="res://App.tscn"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [display]
