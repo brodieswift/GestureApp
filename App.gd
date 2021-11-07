@@ -16,6 +16,8 @@ onready var buttonList = $"SessionView/Toolbar/btnList"
 onready var buttonFlipH = $"SessionView/Toolbar/btnFlipH"
 onready var itemList = $"SessionView/ItemList"
 onready var filterGrey = $"SessionView/Greyscale"
+onready var buttonShuffle = $"MenuView/MenuNode/HBoxContainer4/CheckButton"
+onready var photoNumLabel = $"SessionView/HBoxContainer/Remaining"
 
 var iconPlay = preload("res://Icons/play.png")
 var iconPause = preload("res://Icons/pause.png")
@@ -28,8 +30,12 @@ var sessionTime = 30
 var imagenumber = 0
 var sessionImages = 5
 
+func _ready():
+	#Set random seed for shuflfing photos.
+	randomize()
+
 #Choose Folder Button
-func _on_Button_pressed():
+func _on_SetFolderButton_pressed():
 	FolderDialog.popup()
 
 func _input(event):
@@ -136,6 +142,7 @@ func _add_dir_contents(dir: Directory, files: Array, directories: Array):
 		StartButton.visible = true
 
 func load_image():
+	photoNumLabel.text = "Remaining: " + str(sessionImages - 1)
 	if imagenumber > photos.size()-1:
 		imagenumber = 0
 	
@@ -160,19 +167,20 @@ func load_image():
 	timerPath.start()
 	timerLabel.text = str(floor(timerPath.time_left))
 	itemList.add_icon_item(newTexture, true)
-	#Check the height of itemList to stop it getting too tall
-	if itemList.rect_size.y >= 500:
-		itemList.auto_height = false
-		itemList.rect_min_size.y = 500
 
 func start_session():
 	session.visible = true
+	textureRect.visible = true
+	if buttonShuffle.pressed:
+		photos.shuffle()
+		randomize()
 	load_image()
 	
 func end_session():
 	timerPath.stop()
 	timerLabel.visible = false
 	itemList.visible = true
+	textureRect.visible = false
 	buttonPlay.visible = false
 	buttonPrevious.visible = false
 	buttonNext.visible = false
@@ -216,6 +224,7 @@ func _on_btnFilter_pressed():
 	filterGrey.visible = !filterGrey.visible
 
 func _on_ItemList_item_activated(index):
+	textureRect.visible = true
 	textureRect.texture = itemList.get_item_icon(index)
 	textureRect.stretch_mode = textureRect.STRETCH_KEEP_CENTERED
 	textureRect.expand = false
@@ -232,6 +241,7 @@ func _on_SpinBox_value_changed(value):
 
 func _on_btnList_pressed():
 	itemList.visible = !itemList.visible
+	textureRect.visible = !itemList.visible
 
 func _on_btnExit_pressed():
 	if buttonPlay.visible:

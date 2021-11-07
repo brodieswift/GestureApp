@@ -3,8 +3,7 @@ extends Control
 var sessionTime = 30
 
 func _on_15s_pressed():
-	sessionTime = 1
-	print("clicky")
+	sessionTime = 15
 
 func _on_30s_pressed():
 	sessionTime = 30
@@ -20,3 +19,7 @@ func _on_5m_pressed():
 
 func _on_10m_pressed():
 	sessionTime = 600
+
+
+func _on_SetFolderButton_pressed():
+	pass # Replace with function body.

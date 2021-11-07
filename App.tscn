@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://App.gd" type="Script" id=2]
 [ext_resource path="res://Session.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ZoomingCamera2D.gd" type="Script" id=4]
+
+[sub_resource type="Gradient" id=1506]
+offsets = PoolRealArray( 0.243523, 0.813471 )
+colors = PoolColorArray( 0.0242579, 0.0238953, 0.0703125, 1, 0.0442505, 0.128285, 0.226562, 1 )
+
+[sub_resource type="GradientTexture" id=1505]
+gradient = SubResource( 1506 )
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -11,6 +18,25 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1500.0
+margin_top = -1500.0
+margin_right = 1500.0
+margin_bottom = 1500.0
+rect_min_size = Vector2( 2500, 2500 )
+rect_rotation = -89.9999
+rect_pivot_offset = Vector2( 1500, 1500 )
+texture = SubResource( 1505 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,6 +61,10 @@ group = SubResource( 1 )
 [node name="10m" parent="MenuView/MenuNode/HBoxContainer3" index="5"]
 group = SubResource( 1 )
 
+[node name="CenterContainer" parent="MenuView" index="2"]
+margin_left = 1.01831
+margin_right = 1.01831
+
 [node name="SessionView" parent="." instance=ExtResource( 3 )]
 visible = false
 
@@ -45,11 +75,11 @@ script = ExtResource( 4 )
 [node name="Tween" type="Tween" parent="ZoomingCamera2D"]
 
 [connection signal="resized" from="." to="ZoomingCamera2D" method="_on_App_resized"]
-[connection signal="pressed" from="MenuView/MenuNode/HBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="value_changed" from="MenuView/MenuNode/CenterContainer/SpinBox" to="." method="_on_SpinBox_value_changed"]
+[connection signal="pressed" from="MenuView/MenuNode/HBoxContainer/SetFolderButton" to="." method="_on_SetFolderButton_pressed"]
 [connection signal="pressed" from="MenuView/VBoxContainer/StartSessionButton" to="." method="_on_StartSessionButton_pressed"]
 [connection signal="dir_selected" from="MenuView/CenterContainer/FileDialog" to="." method="_on_FileDialog_dir_selected"]
 [connection signal="timeout" from="SessionView/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="item_activated" from="SessionView/ItemList" to="." method="_on_ItemList_item_activated"]
 [connection signal="pressed" from="SessionView/Toolbar/btnPin" to="." method="_on_btnPin_pressed"]
 [connection signal="pressed" from="SessionView/Toolbar/btnPrev" to="." method="_on_btnPrev_pressed"]
 [connection signal="pressed" from="SessionView/Toolbar/btnPlay" to="." method="_on_btnPlay_pressed"]
